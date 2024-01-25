@@ -93,16 +93,17 @@ export const ContainerRepositorios = styled.div`
   align-items: flex-start; /* Alinhamento ao topo */
   gap: 30px;
   padding-top: 70px;
-  background-color: #0707079b;
+  background-color: #0707079b;  
 `
 
 export const BlockRepositorio = styled.div`
-  flex: 0 0 calc(24.33% - 30px); /* Calcula 33.33% - 30px de gap entre os elementos */
+  flex: 0 0 calc(24.33% - 40px); /* Calcula 33.33% - 30px de gap entre os elementos */
   height: 70px;
+  width: auto;
   background-color: #0e0e0ef6;
   display: flex;
-  justify-content: start;
-  align-items: start;
+  justify-content: center;
+  align-items: center;
   border-radius: 20px;
   margin-bottom: 30px; /* Adiciona um espaçamento entre as linhas */
 `

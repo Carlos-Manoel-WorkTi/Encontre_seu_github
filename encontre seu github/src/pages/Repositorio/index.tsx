@@ -6,13 +6,19 @@ import api from "../../services/api";
 import { SetaLeft } from "../Main/icons";
 import { ButtonSubmit } from "../Main/style";
 import { AddRep } from "../Main/icons";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
+interface ListInterface {
+  nome: string;
+  link:string;
+}
 export default function Teste() {
   // interface repoParams {
   //   id:number;
   //   full_name: string;
   // }
+  const [listaR, setListaR] = useState<ListInterface[]>([]); // Inicializando como um array vazio
+
   const params = useParams();
   // const [repositorios, setRepositorios] = useState<repoParams>();
 
@@ -22,10 +28,12 @@ export default function Teste() {
         
       try {
         const response = await api.get(`users/${params.name}/repos`);
-        response.data.map((repo:{full_name:string}) => {
-          console.log(repo.full_name);
+        const rep = response.data.map((repo:{full_name:string}) => {
+          const repos = repo.full_name.split('/')
+          return { nome: repos[1], link: repo.full_name };
+         
         })
- 
+          setListaR(rep);
         
       }catch (error) {
         console.error('Erro ao buscar repositórios:', error);
@@ -58,20 +66,15 @@ export default function Teste() {
           <Voltar to={"/"}><SetaLeft size={40}/></Voltar>
          </RowLine>
          <ContainerRepositorios>
-        
-          
-      
-          <BlockRepositorio>
-            <NameRepositorio>
-              <h3></h3>
-            </NameRepositorio>
-          </BlockRepositorio>
-           
-    
+            {listaR.map((repo, index) => (
+              <BlockRepositorio key={index}>
+                <a href={`https://github.com/${repo.link}`}>
+                <NameRepositorio>{repo.nome}</NameRepositorio>
+                </a>
+              </BlockRepositorio>
+            ))}
+        </ContainerRepositorios>
 
-            
-
-         </ContainerRepositorios>
  
       <Link to={`/`}>Voltar</Link>
       </Container>
