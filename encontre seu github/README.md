@@ -19,3 +19,15 @@ Este projeto foi desenvolvido utilizando React e tem como objetivo [descreva bre
 
    ```bash
    git clone https://github.com/seu-usuario/seu-projeto.git
+2. Entre na pasta 'encontre seu github'
+
+   ```bash
+   cd encontre seu github
+3. Instale as dependências
+
+   ```bash
+   npm instal
+4. Inicie o servidor
+
+   ```bash
+   npm run dev
